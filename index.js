@@ -1,4 +1,4 @@
-const GetSizeOfBlob = (blob) => {
+exports.GetSizeOfBlob = (blob) => {
     return new Promise((resolve, reject) => {
         const img = new Image();
         img.onload = () => {
@@ -10,5 +10,3 @@ const GetSizeOfBlob = (blob) => {
         img.src = URL.createObjectURL(blob);
     });
 }
-
-export { GetSizeOfBlob };
