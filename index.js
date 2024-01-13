@@ -1,4 +1,4 @@
-exports.GetSizeOfBlob = (blob) => {
+export default function getSizeOfBlob(blob){
     return new Promise((resolve, reject) => {
         const img = new Image();
         img.onload = () => {
