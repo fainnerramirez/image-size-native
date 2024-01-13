@@ -35,13 +35,15 @@ Instala la libreria con el siguiente comando
     <pre id="ancho"></pre>
     <pre id="alto"></pre>
     <pre id="error"></pre>
-    
-</body>
 
+    <script type="module" src="app.js"></script>
+</body>
 </html>
 ```
 
 ```javascript
+//app.js 
+
  import getSizeOfBlob from "https://unpkg.com/image-size-native";
 
         document.getElementById("file").addEventListener('change', (e) => {
