@@ -18,16 +18,57 @@ Instala la libreria con el siguiente comando
     
 ## Uso/Ejemplos - Caso formato Blob
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input id="file" type="file">
+    <h5>Dimensiones de la imagen: </h5>
+    <pre id="ancho"></pre>
+    <pre id="alto"></pre>
+    <pre id="error"></pre>
+    
+</body>
+
+</html>
+```
+
 ```javascript
-import { GetSizeOfBlob } from 'image-size-native'
+ import getSizeOfBlob from "https://unpkg.com/image-size-native";
 
-const getDimensionsImage = (contentBlob) => {
+        document.getElementById("file").addEventListener('change', (e) => {
+            const file = e.target.files[0];
 
-    const {img, width, height } = await GetSizeOfBlob(contentBlob);
+            if (file) {
 
-    const imageObject = {img, width, height};
+                const reader = new FileReader();
 
-    return imageObject;
+                reader.onload = function (e) {
+                    const content = e.target.result;
+                    const contentUint8Array = new Uint8Array(content);
+                    const contentBlob = new Blob([contentUint8Array]);
+
+                    getSizeOfBlob(contentBlob)
+                        .then((response) => {
+                            document.getElementById("ancho").textContent = "ancho: " + response.width;
+                            document.getElementById("alto").textContent = "alto: " +  response.height;
+                        })
+                        .catch((error) => {
+                            document.getElementById("error").textContent = error;
+                        })
+                }
+
+                reader.readAsArrayBuffer(file);
+            }
+        })
 }   
 ```
 
