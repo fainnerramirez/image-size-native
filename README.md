@@ -1,86 +1,71 @@
 
 # image-size-native
 
-image-size-native es una libreria ligera para Javascript que proporciona una manera eficiente y nativa de obtener dimensiones (ancho y alto) de imágenes. Elimina la necesidad de dependencias externas al aprovechar las capacidades nativas del navegador o entrono de ejecución. Simplifica el proceso de obtener información crucial sobre imagenes, mejorando el rendimiento y facilitando la integración en proyectos web y aplicaciones basadas en Javascript.
-
-
-
-
-
+image-size-native es un paquete ligera para Javascript que proporciona una manera eficiente y nativa de obtener dimensiones (ancho y alto) de imágenes. Elimina la necesidad de dependencias externas al aprovechar las capacidades nativas del navegador o entrono de ejecución. Simplifica el proceso de obtener información crucial sobre imagenes en diferentes formatos, mejorando el rendimiento y facilitando la integración en proyectos web y aplicaciones basadas en Javascript.
 
 ## Instalación
 
-Instala la libreria con el siguiente comando
-
-```bash
-  npm install image-size-native --save
-```
-    
-## Uso/Ejemplos - Caso formato Blob
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
-    <input id="file" type="file">
-    <h5>Dimensiones de la imagen: </h5>
-    <pre id="ancho"></pre>
-    <pre id="alto"></pre>
-    <pre id="error"></pre>
-
-    <script type="module" src="app.js"></script>
-</body>
-</html>
-```
+Importa el paquete de la siguiente manera:
 
 ```javascript
-//app.js 
+  import getSizeOfImage from "https://unpkg.com/image-size-native";
+```
+    
+## Ejemplo de uso con diferentes formatos de imagen
 
- import getSizeOfBlob from "https://unpkg.com/image-size-native";
+```javascript
 
-        document.getElementById("file").addEventListener('change', (e) => {
-            const file = e.target.files[0];
+ import getSizeOfImage from "https://unpkg.com/image-size-native";
 
-            if (file) {
+    const blob = new Blob([/* datos binarios de la imagen */]);
+    const dataURL = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/...";
+    const imageObject = new Image();
+    imageObject.src = "imagen.jpg";
+    const canvas = document.createElement('canvas');
 
-                const reader = new FileReader();
+    getSizeOfImage(blob)
+            .then(({ img, width, height }) => {
+                console.log("Ancho:", width);
+                console.log("Alto:", height);
+            })
+            .catch(error => console.error(error));
 
-                reader.onload = function (e) {
-                    const content = e.target.result;
-                    const contentUint8Array = new Uint8Array(content);
-                    const contentBlob = new Blob([contentUint8Array]);
+    getSizeOfImage(dataURL) // También puedes pasar una URL de datos
+            .then(({ img, width, height }) => {
+                console.log("Ancho:", width);
+                console.log("Alto:", height);
+            })
+            .catch(error => console.error(error));
 
-                    getSizeOfBlob(contentBlob)
-                        .then((response) => {
-                            document.getElementById("ancho").textContent = "ancho: " + response.width;
-                            document.getElementById("alto").textContent = "alto: " +  response.height;
-                        })
-                        .catch((error) => {
-                            document.getElementById("error").textContent = error;
-                        })
-                }
+    getSizeOfImage(imageObject) // También puedes pasar un objeto de imagen
+            .then(({ img, width, height }) => {
+                console.log("Ancho:", width);
+                console.log("Alto:", height);
+            })
+            .catch(error => console.error(error));
 
-                reader.readAsArrayBuffer(file);
-            }
-        })
-}   
+    getSizeOfImage(canvas) // También puedes pasar un canvas
+            .then(({ img, width, height }) => {
+                console.log("Ancho:", width);
+                console.log("Alto:", height);
+            })
+            .catch(error => console.error(error));
+
+    //si pasas un formato desconocido o no soportado; saldrá un error con el mensaje:
+    // Formato de imagen no compatible
 ```
 
+## Error en Formatos no soportados
+
+si pasas un formato desconocido o no soportado; saldrá un error con el mensaje:
+
+`Error: Formato de imagen no compatible`
 
 ## Licencia
 
 Este paquete tiene licencia MIT
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-
 
 
 ## Authors
