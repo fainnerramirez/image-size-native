@@ -1,4 +1,4 @@
-export default function getSizeOfImage(imageData) {
+module.exports = function getSizeOfImage(imageData) {
     return new Promise((resolve, reject) => {
         const img = new Image();
         img.onload = () => {
