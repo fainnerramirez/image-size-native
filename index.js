@@ -60,7 +60,7 @@ module.exports = function getSizeOfImage(imageData) {
             }
 
         } catch (error) {
-            reject(new ImageProcessingError('Ocurrió un error desconocido durante el procesamiento de la imagen. Por favor, revisa los datos proporcionados.', 'UNKNOWN_ERROR'));
+            reject(new ImageProcessingError(`Ocurrió un error desconocido durante el procesamiento de la imagen. Por favor, revisa los datos proporcionados. Error: ${error}`, 'UNKNOWN_ERROR'));
         }
     });
 };
