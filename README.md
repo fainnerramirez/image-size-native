@@ -8,14 +8,14 @@ image-size-native es un paquete ligera para Javascript que proporciona una maner
 Importa el paquete de la siguiente manera:
 
 ```javascript
-  import getSizeOfImage from "https://unpkg.com/image-size-native";
+  const getSizeOfImage = require("image-size-native");
 ```
     
 ## Ejemplo de uso con diferentes formatos de imagen
 
 ```javascript
 
- import getSizeOfImage from "https://unpkg.com/image-size-native";
+    const getSizeOfImage = require("image-size-native");
 
     const blob = new Blob([/* datos binarios de la imagen */]);
     const dataURL = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/...";
