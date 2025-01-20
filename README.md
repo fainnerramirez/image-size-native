@@ -63,11 +63,25 @@ Importa el paquete de la siguiente manera:
     // Formato de imagen no compatible
 ```
 
-## Error en Formatos no soportados
+## Capturando Errores 
 
-si pasas un formato desconocido o no soportado; saldrá un error con el mensaje:
+Si ocurre un error inesperado en el proceso, puedes capturar los errores así: 
 
-`Error: Formato de imagen no compatible`
+```javascript
+  
+  getSizeOfImage(dataURL) // También puedes pasar una URL de datos
+            .then(({ img, width, height }) => {
+                console.log("Ancho:", width);
+                console.log("Alto:", height);
+            })
+            .catch(error => {
+              //Capturando errores especificos
+              if(error instanceof ImageProcessingError){
+                console.log("error type: ", error.type);
+                console.log("error message: ", error.message);
+              }
+            });
+```
 
 ## Licencia
 
