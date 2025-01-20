@@ -7,8 +7,23 @@ image-size-native es un paquete ligera para Javascript que proporciona una maner
 
 Importa el paquete de la siguiente manera:
 
+### Common Js
+
 ```javascript
   const getSizeOfImage = require("image-size-native");
+```
+
+### Module
+
+```javascript
+  import getSizeOfImage from "image-size-native";
+```
+
+### Typescript
+
+```javascript
+  //@ts-ignore
+   import getSizeOfImage from "image-size-native";
 ```
     
 ## Ejemplo de uso con diferentes formatos de imagen
