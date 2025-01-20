@@ -68,7 +68,8 @@ Importa el paquete de la siguiente manera:
 Si ocurre un error inesperado en el proceso, puedes capturar los errores así: 
 
 ```javascript
-  
+  import getSizeOfImage, { ImageProcessingError } from "image-size-native";
+
   getSizeOfImage(dataURL) // También puedes pasar una URL de datos
             .then(({ img, width, height }) => {
                 console.log("Ancho:", width);
