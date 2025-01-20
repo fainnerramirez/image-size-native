@@ -12,6 +12,6 @@ declare module 'image-size-native' {
       height: number;
     }
   
-    export function getSizeOfImage(imageData: string | Blob | HTMLImageElement | HTMLCanvasElement): Promise<ImageSize>;
+    export default function getSizeOfImage(imageData: string | Blob | HTMLImageElement | HTMLCanvasElement): Promise<ImageSize>;
   }
   
