@@ -1,6 +1,6 @@
 {
   "name": "image-size-native",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "description": "image-size-native es una libreria ligera para Javascript que proporciona una manera eficiente y nativa de obtener dimensiones (ancho y alto) de imágenes. Elimina la necesidad de dependencias externas al aprovechar las capacidades nativas del navegador o entrono de ejecución. Simplifica el proceso de obtener información crucial sobre imagenes, mejorando el rendimiento y facilitando la integración en proyectos web y aplicaciones basadas en Javascript.",
   "main": "index.js",
   "types": "index.d.ts",
